@@ -1,26 +1,26 @@
-import ListGroup from "./Components/ListGroup";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
 
-function App() {
-  let items = [
-    "New York",
-    "San Francisco",
-    "Tokyo",
-    "London",
-    "Copenhagen",
-    "Paris",
-  ];
+import { NavBar } from "../NavBar";
+import { HomePage } from "../pages/HomePage";
+import { AboutPage } from "../pages/AboutPage";
+import { ContactPage } from "../pages/ContactPage";
 
-  const handleSelectItem = (item: string) => {
-    console.log(item);
-  };
+export function App() {
   return (
-    <div>
-      <ListGroup
-        items={items}
-        heading="Cities"
-        onSelelectItem={handleSelectItem}
-      />
-    </div>
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route path="/">
+          <HomePage />
+        </Route>
+        <Route path="/about">
+          <AboutPage />
+        </Route>
+        <Route path="/contact">
+          <ContactPage />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
